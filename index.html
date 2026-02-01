@@ -12,81 +12,87 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
-    background:black;
+    background:
+        radial-gradient(circle at center,
+            rgba(255,255,255,0.35) 0%,
+            rgba(255,255,255,0.15) 25%,
+            rgba(0,0,0,0.85) 70%,
+            black 100%);
     font-family:Arial, sans-serif;
     color:white;
     overflow:hidden;
 }
 
+/* Container */
 .container{
     text-align:center;
     position:relative;
 }
 
+/* Texte */
 h1{
     font-size:48px;
-    margin-bottom:40px;
+    margin-bottom:30px;
     text-transform:uppercase;
     letter-spacing:3px;
-    text-shadow:0 0 20px white;
+    text-shadow:0 0 25px white;
 }
 
-/* ===== AURA DIVINE ===== */
-.aura{
+/* Zone divine */
+.divine{
     position:relative;
     display:inline-block;
 }
 
-.aura::before,
-.aura::after{
+/* Halo lumineux qui vient de l'image */
+.divine::before{
     content:"";
     position:absolute;
-    inset:-40px;
-    background:radial-gradient(circle, rgba(255,255,255,0.8), transparent 70%);
-    filter:blur(30px);
-    z-index:-2;
-}
-
-/* Barres de lumière */
-.light-bars{
-    position:absolute;
-    inset:-80px;
-    background:
-        repeating-linear-gradient(
-            90deg,
-            rgba(255,255,255,0.15) 0px,
-            rgba(255,255,255,0.4) 2px,
-            rgba(255,255,255,0.15) 4px,
-            transparent 40px
-        );
-    animation:moveLight 4s linear infinite;
+    inset:-120px;
+    background:radial-gradient(circle,
+        rgba(255,255,255,0.9) 0%,
+        rgba(255,255,255,0.6) 20%,
+        rgba(255,255,255,0.2) 40%,
+        transparent 65%);
+    filter:blur(40px);
     z-index:-1;
 }
 
-@keyframes moveLight{
-    from{background-position:0 0;}
-    to{background-position:200px 0;}
-}
-
-/* IMAGE */
-img{
-    max-width:90vw;
-    max-height:60vh;
-    border-radius:16px;
+/* Image */
+.divine img{
+    max-width:95vw;
+    max-height:70vh;
+    border-radius:18px;
     box-shadow:
-        0 0 30px rgba(255,255,255,0.8),
-        0 0 80px rgba(255,255,255,0.6),
-        0 0 140px rgba(255,255,255,0.4);
-    animation:glow 2.5s ease-in-out infinite alternate;
+        0 0 40px rgba(255,255,255,0.9),
+        0 0 120px rgba(255,255,255,0.6),
+        0 0 220px rgba(255,255,255,0.4);
+    animation:holyGlow 3s ease-in-out infinite alternate;
 }
 
-@keyframes glow{
-    from{
-        filter:brightness(1);
-    }
-    to{
-        filter:brightness(1.3);
-    }
+/* Couronne d'ange */
+.crown{
+    position:absolute;
+    top:-50px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:48px;
+    text-shadow:
+        0 0 10px white,
+        0 0 30px gold;
+    animation:float 2.5s ease-in-out infinite;
+}
+
+/* Animations */
+@keyframes holyGlow{
+    from{filter:brightness(1);}
+    to{filter:brightness(1.35);}
+}
+
+@keyframes float{
+    0%{transform:translateX(-50%) translateY(0);}
+    50%{transform:translateX(-50%) translateY(-8px);}
+    100%{transform:translateX(-50%) translateY(0);}
 }
 </style>
 </head>
@@ -96,11 +102,12 @@ img{
 <div class="container">
     <h1>VOUS VOUS ÊTES FAIT AVOIR</h1>
 
-    <div class="aura">
-        <div class="light-bars"></div>
-        <img src="doighthonneur.png" alt="image divine">
+    <div class="divine">
+        <div class="crown">👑</div>
+        <img src="doighthonneur.png" alt="doigt divin">
     </div>
 </div>
 
 </body>
 </html>
+
